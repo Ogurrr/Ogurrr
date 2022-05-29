@@ -1,6 +1,7 @@
 - 👋 Hi, I’m @AdvanceStudios
 - 👀 I’m interested in .NET 6 and Linux
 - 🌱 I’m currently learning HTML & C#
+- 👍 I'm using Windows and manjaro Linux with wine :)
    
 
 <!---
