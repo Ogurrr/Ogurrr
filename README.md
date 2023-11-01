@@ -1,7 +1,8 @@
 - 👋 Hi, I’m @AdvanceStudios
 - 👀 I’m interested in C , C# and Linux
 - 🌱 I’m currently learning C#
-- 👍 I'm using and custom Linux :)
+- 👍 I'm using and custom arch  Linux :)
+- 🙄See my projects! 
 
 github.com
 
