@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @AdvanceStudios
+- 👋 Hi Ogur
 - 👀 I’m interested in C , C# and Linux
 - 🌱 I’m currently learning C#
 - 👍 I'm using and custom arch  Linux :)
