@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duino Coin Faucet</title>
+    <!-- React and ReactDOM CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Aura CSS -->
+    <style>
+        body {
+            background-color: #181818;
+            color: #e0e0e0;
+            margin: 0;
+            height: 100vh; /* Ustawia wysokość na 100% widoku */
+            display: flex; 
+            justify-content: center; /* Wyśrodkowanie w poziomie */
+            align-items: center; /* Wyśrodkowanie w pionie */
+            position: relative; /* Umożliwia użycie absolute w #root */
+        }
+
+        #root {
+            background-color: #282c34;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            position: absolute; /* Umożliwia pełne wyśrodkowanie */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Wyśrodkowanie w pionie i poziomie */
+        }
+        h1 {
+            color: #61dafb;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+            background-color: #3a3f47;
+            color: #e0e0e0;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #61dafb;
+            color: #282c34;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        .ad-container {
+            margin: 20px 0;
+        }
+
+        iframe {
+            border: none;
+            width: 125px;
+            height: 125px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Faucet() {
+            const [username, setUsername] = React.useState('');
+            const [message, setMessage] = React.useState('');
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setMessage('Processing your request...');
+
+                // Placeholder for faucet logic (e.g., Duino Coin API request)
+                const response = await fetch('/faucet-api', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    setMessage(`Success! You've received ${data.amount} DUCO.`);
+                } else {
+                    setMessage('Error: ' + data.error);
+                }
+            };
+
+            return (
+                <div>
+                    <h1>Duino Coin Faucet</h1>
+                    <p>Enter your Duino Coin username to receive free coins.</p>
+                    <form onSubmit={handleSubmit}>
+                        <input 
+                            type="text" 
+                            className="aura-input" 
+                            value={username} 
+                            onChange={(e) => setUsername(e.target.value)} 
+                            placeholder="Duino Coin Username"
+                        />
+                        <button type="submit" className="aura-button">Get Coins</button>
+                    </form>
+                    <p>Please don't turn off adblock. We support ourselves with it                    </p>
+
+                    {/* Miejsce na iframe reklamę */}
+                    <div className="ad-container">
+                        <iframe data-aa='2353857' src='//ad.a-ads.com/2353857?size=125x125'></iframe>
+                    </div>
+
+                    {message && <p className={message.startsWith('Success') ? 'aura-text-success' : 'aura-text-danger'}>{message}</p>}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Faucet />, document.getElementById('root'));
+    </script>
+</body>
+</html>
